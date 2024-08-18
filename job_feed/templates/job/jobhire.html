@@ -1,0 +1,129 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% load tailwind_tags %}
+
+
+{% block content %}
+<div class="flex flex-row justify-around pt-24 mx-10">
+    <div class="right_side h-full rounded-lg p-3 w-6/12 bg-white mx-10  border drop-shadow-lg">
+        <p class="text-xl text-center font-semibold text-orange-400">Create Hiring Post</p>
+        <div class="mt-3 ">
+
+            <form method='POST' action="{% url 'hirepost' %}">
+                {% csrf_token %}
+                <div class="mt-3 ">
+                    <span class="text-purple-900 font-semibold">Company Name<a class="text-red-500">*</a></span>
+                    <input
+                        class="bg-white border h-10 w-full mt-1 focus:border-blue-700 transition-all rounded-lg text-sm outline-none px-2"
+                        type="text" name="name" placeholder="" required>
+                </div>
+                <div class="mt-3 ">
+                    <span class="text-purple-900 font-semibold">Company Type<a class="text-red-500">*</a></span>
+                    <select
+                        class="w-full outline-none transition-all focus:border-blue-800 mt-[3px] text-gray-900 border h-10 rounded-lg bg-white text-sm cursor-pointer "
+                        recuired name="type">
+                        <option class="hidden rounded-lg ">Select a type</option>
+                        <option>Software Firm</option>
+                        <option>Marketing Agency</option>
+                        <option>Data Analytics Firm</option>
+                        <option>Start Up</option>
+                        <option>Others</option>
+                    </select>
+                </div>
+                <div class="mt-3">
+                    <span class="text-purple-900 font-semibold">Comnpany Short Description</span>
+                    <textarea id="message" rows="4" maxlength="180"
+                        class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                        name="description" placeholder="Your message..."></textarea>
+                </div>
+                <div class="mt-3 ">
+                    <span class="text-purple-900 font-semibold">Company Email<a class="text-red-500">*</a></span>
+                    <input
+                        class="bg-white border h-10 w-full mt-1 focus:border-blue-700 transition-all rounded-lg text-sm outline-none px-2"
+                        type="text" name="email" placeholder="" required>
+                </div>
+
+                <div class="mt-3 ">
+                    <span class="text-purple-900 font-semibold">Company Address<a class="text-red-500"></a></span>
+                    <input
+                        class="bg-white border h-10 w-full mt-1 focus:border-blue-700 transition-all rounded-lg text-sm outline-none px-2"
+                        type="text" name="address" placeholder="" required>
+                </div>
+                <div class="mt-3 ">
+                    <span class="text-purple-900 font-semibold">Seeking Sectors<a class="text-gray-400 text-sm">
+                            (You
+                            can wirte multiple sectors. Atleast one required)</a><a class="text-red-500">*</a></span>
+                    <textarea rows="2" maxlength="100"
+                        class="bg-white border h-20 w-full mt-1 focus:border-blue-700 transition-all rounded-lg text-sm outline-none px-2"
+                        type="text" name="sector" placeholder="" required></textarea>
+                </div>
+                <div class="flex flex-row gap-4 justify-between">
+                    <div class="mt-3 ">
+                        <span class="text-purple-900 font-semibold">Experience<a class="text-red-500">*</a></span>
+                        <select
+                            class="pl-2 outline-none transition-all focus:border-blue-800 mt-[3px] text-gray-900 border h-10 rounded-lg bg-white text-sm cursor-pointer "
+                            recuired name="experience">
+                            <option class="hidden rounded-lg">Select year of experience</option>
+                            <option>Fresher</option>
+                            <option>6 months</option>
+                            <option>1-2 </option>
+                            <option>3-4</option>
+                            <option>5 or Above</option>
+                        </select>
+                    </div>
+                    <div class="mt-3 ">
+                        <span class="text-purple-900 font-semibold">Position<a class="text-red-500">*</a></span>
+                        <select
+                            class="pl-2 outline-none transition-all focus:border-blue-800 mt-[3px] text-gray-900 border h-10 rounded-lg bg-white text-sm cursor-pointer "
+                            recuired name="position">
+                            <option class="hidden rounded-lg">Select job position/Designation</option>
+                            <option>Intern</option>
+                            <option>Junior</option>
+                            <option>Mid Level</option>
+                            <option>Senior</option>
+                            <option>Head/Chief</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <span class="text-purple-900 font-semibold">Probable Joining Date</span>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor"
+                                viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                        <input datepicker datepicker-format="yyyy-mm-dd" type="text"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 "
+                            name="date" placeholder="Select date">
+
+                    </div>
+                </div>
+                <button
+                    class="submit_btn text-sm mt-10 h-12 bg-blue-800 text-white cursor-pointer transition-all hover:bg-orange-500 flex justify-center items-center w-full bg-opacity-90 rounded-[10px] font-bold">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="font-medium text-sm w-6/12 pr-4 flex flex-col gap-4">
+        <p class="text-lg font-bold text-center text-blue-700">Instructions</p>
+        <p>Company Name: Provide the company name</p>
+        <p>Company Type: Choose the company type from the drop down options.<br> Eg. Software Firm</p>
+        <p>Company Description: Write a short description about how the company works and company background within
+            100 words </p>
+        <p>Company Email: Provide the accurate company email and confirm it.</p>
+        <p>Company location: Write company location</p>
+        <p>Seeking Sectors: Write down the sectors for which you want employee. <br> Eg. 1 Front-end Developer, 1
+            Graphic designer, 3 Marketing executive.</p>
+        <p>Employee Experience: Select the experience level that you want.</p>
+        <p>Position: Select the position that you want a intern, junior or senior position.</p>
+        <p>Expected Joining Date: Select expected joining date of employee.</p>
+        <p>Clicking the check box for excepting the terms and condition of Resume2Do.</p>
+        <p>Click on <a class="text-orange-500">Submit</a> button to submit the application. Resume2Do will contact
+            with you within 48 hours to confirm your job circular and will ask for more information. </p>
+
+    </div>
+</div>
+{% endblock content %}

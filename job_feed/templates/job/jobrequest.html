@@ -1,0 +1,112 @@
+{% load static %}
+{% load tailwind_tags %}
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'job/css/style.css' %}">
+    <title>Job Requests</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'job/img/favicon.png' %}">
+    {% tailwind_css %}
+</head>
+
+<body>
+    <div class="flex flex-row flex-wrap justify-between px-5 py-3 bg-gray-200">
+        <div class=" flex flex-row flex-wrap">
+            <p class="font-bold text-gray-900">Admin Panel</p>
+            <p class="px-16 text-gray-900">Job Requests</p>
+        </div>
+        <div>
+            <a href="{% url 'logout_admin' %}" class="text-emerald-600 hover:text-blue-600">Logout</a>
+        </div>
+    </div>
+    <div class="flex flex-row flex-grow">
+        <div class="flex flex-col justify-around gap-8 px-5 py-5 bg-gray-600 text-white pb-96 ">
+            <a href="{% url 'userlist' %}">View Users</a>
+            <a href="{% url 'joblist' %}">Job list</a>
+            <a href="{% url 'createcircular' %}">Add New Job</a>
+            <a href="{% url 'jobrequest' %}" class="text-md font-semibold text-orange-500 drop-shadow-lg">Job Requests</a>
+            <a href="#">View All Vlogs</a>
+            <a href="#">Add Vlogs</a>
+            <a href="#">View Guidelines</a>
+            <a href="#">Add New Guidelines</a>
+        </div>
+
+        <div class="flex flex-col flex-wrap mt-10 mx-10 gap-4 w-10/12">
+            <!--User Table-->
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <p class="text-center font-bold text-lg p-4">Requests By Companies</p>
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Company Name</th>
+                            <th scope="col" class="px-6 py-3">Type</th>
+                            <th scope="col" class="px-6 py-3">position</th>
+                            <th scope="col" class="px-6 py-3">Email</th>
+                            <th scope="col" class="px-6 py-3">ID</th>
+                            <th scope="col" class="px-6 py-3"><span class="sr-only">View</span><span
+                                    class="sr-only">Delete</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                GrabSoft
+                            </th>
+                            <td class="px-6 py-4">
+                                Software Firm
+                            </td>
+                            <td class="px-6 py-4">
+                                Project Manager
+                            </td>
+                            <td class="px-6 py-4">
+                                grabsoftfirm@gmail.com
+                            </td>
+                            <td class="px-6 py-4">
+                                07
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-4">
+                                <a href="#"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                                <a href="#"
+                                    class="font-medium text-red-600 dark:text-blue-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row"
+                                class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                SR SOFT
+                            </th>
+                            <td class="px-6 py-4">
+                                Software Firm
+                            </td>
+                            <td class="px-6 py-4">
+                                Full Stack Developr
+                            </td>
+                            <td class="px-6 py-4">
+                                grabsoftfirm@gmail.com
+                            </td>
+                            <td class="px-6 py-4">
+                                05
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-4">
+                                <a href="#"
+                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">View</a>
+                                <a href="#"
+                                    class="font-medium text-red-600 dark:text-blue-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

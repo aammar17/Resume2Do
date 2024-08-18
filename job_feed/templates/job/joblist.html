@@ -1,0 +1,117 @@
+{% load static %}
+{% load tailwind_tags %}
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'profile/css/style.css' %}">
+  <title>Job list</title>
+  <link rel="icon" type="image/x-icon" href="{% static 'job/img/favicon.png' %}">
+  {% tailwind_css %}
+</head>
+<body>
+    <div class="flex flex-row flex-wrap justify-between px-5 py-3 bg-gray-200">
+        <div class=" flex flex-row flex-wrap">
+            <p class="font-bold text-gray-900">Admin Panel</p>
+            <p class="px-16 text-gray-900">Job List</p>
+        </div>
+        <div>
+            <a href="{% url 'logout_admin' %}" class="text-emerald-600 hover:text-blue-600">Logout</a>
+        </div>
+    </div>
+    <div class="flex flex-row flex-grow">
+        <div class="flex flex-col justify-around gap-8 px-5 py-5 bg-gray-600 text-white pb-96 ">
+            <a href="{% url 'userlist' %}">View Users</a>
+            <a href="{% url 'joblist' %}" class="text-md font-semibold text-orange-500 drop-shadow-lg">Job list</a>
+            <a href="{% url 'createcircular' %}">Add New Job</a>
+            <a href="{% url 'jobrequest' %}">Job Requests</a>
+            <a href="#">View All Vlogs</a>
+            <a href="#">Add Vlogs</a>
+            <a href="#">View Guidelines</a>
+            <a href="#">Add New Guidelines</a>
+        </div>
+        
+        <div class="flex flex-col flex-wrap mt-10 mx-10 gap-4 w-10/12">
+            <p class="text-md font-semibold">Search by job Sectors</p>
+            <div class="flex flex-row">
+                <div>
+                    <button class="p-2 border rounded-lg my-1 mx-1 text-sm font-semibold hover:bg-blue-500 hover:text-white focus:ring-2 ring-blue-600 focus:scale-75">Developer</button>
+                    <button class="p-2 border rounded-lg my-1 mx-1 text-sm font-semibold hover:bg-blue-500 hover:text-white focus:ring-2 ring-blue-600 focus:scale-75">Content Creator</button>
+                    <button class="p-2 border rounded-lg my-1 mx-1 text-sm font-semibold hover:bg-blue-500 hover:text-white focus:ring-2 ring-blue-600 focus:scale-75">Project manager</button>
+                    <button class="p-2 border rounded-lg my-1 mx-1 text-sm font-semibold hover:bg-blue-500 hover:text-white focus:ring-2 ring-blue-600 focus:scale-75">Business Analyst</button>
+                    <button class="p-2 border rounded-lg my-1 mx-1 text-sm font-semibold hover:bg-blue-500 hover:text-white focus:ring-2 ring-blue-600 focus:scale-75">Virtual Assistant</button>
+                    <button class="p-2 border rounded-lg my-1 mx-1 text-sm font-semibold hover:bg-blue-500 hover:text-white focus:ring-2 ring-blue-600 focus:scale-75">Graphics And Animation</button>
+                    <button class="p-2 border rounded-lg my-1 mx-1 text-sm font-semibold hover:bg-blue-500 hover:text-white focus:ring-2 ring-blue-600 focus:scale-75">SQA</button>
+                    <button class="p-2 border rounded-lg my-1 mx-1 text-sm font-semibold hover:bg-blue-500 hover:text-white focus:ring-2 ring-blue-600 focus:scale-75">Data Analyst</button>
+                </div>
+                <form class="flex items-center w-6/12">   
+                    <div class="relative w-full">
+                        <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                        </div>
+                        <input type="text" id="simple-search" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 " placeholder="Search by company name" required>
+                    </div>
+                    <button type="submit" class="p-2.5 ml-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg></button>
+                </form>
+            </div>
+            
+            <!--User Table-->
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"><p class="text-center font-bold text-lg p-4">Job Circular List</p>
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Name</th>
+                            <th scope="col" class="px-6 py-3">Password</th>
+                            <th scope="col" class="px-6 py-3">Email</th>
+                            <th scope="col" class="px-6 py-3">ID</th>
+                            <th scope="col" class="px-6 py-3"><span class="sr-only">Edit</span><span class="sr-only">Delete</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                Apple MacBook Pro 17"
+                            </th>
+                            <td class="px-6 py-4">
+                                Sliver
+                            </td>
+                            <td class="px-6 py-4">
+                                Laptop
+                            </td>
+                            <td class="px-6 py-4">
+                                $2999
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-4">
+                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <a href="#" class="font-medium text-red-600 dark:text-blue-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
+                                Microsoft Surface Pro
+                            </th>
+                            <td class="px-6 py-4">
+                                White
+                            </td>
+                            <td class="px-6 py-4">
+                                Laptop PC
+                            </td>
+                            <td class="px-6 py-4">
+                                $1999
+                            </td>
+                            <td class="px-6 py-4 text-right space-x-4">
+                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                <a href="#" class="font-medium text-red-600 dark:text-blue-500 hover:underline">Delete</a>
+                            </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

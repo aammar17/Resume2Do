@@ -1,0 +1,74 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% load tailwind_tags %}
+
+{% block content %}
+<div class="pt-24 flex flex-row px-10">
+  <div class="flex flex-col">
+    <p class="text-lg font-medium mb-4">Dashboard</p>
+    <div class="flex flex-row jystify-around gap-4 ">
+      <div class="flex flex-col justify-around gap-4 mt-2">
+        <img src="{% static 'job/img/rsmedit.png' %}" alt="" class="w-8 opacity-90">
+        <hr>
+        <img src="{% static 'job/img/myjobs.png' %}" class="w-8 opacity-90">
+        <hr>
+        <img src="{% static 'job/img/myinterest.png' %}" alt="" class="w-8 opacity-90">
+        <hr>
+      </div>
+      <div class="flex flex-col justify-around gap-2">
+        <a href="" class="text-md font-medium link link-underline link-underline-black text-black">Edit Resume</a>
+        <a href="" class="text-md font-medium link link-underline link-underline-black text-black">My Jobs</a>
+        <a href="" class="text-md font-medium link link-underline link-underline-black text-black">My Interests</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-row justify-around ml-64">
+    <div class="mt-3">
+      <p class="font-semibold">My Job Interest List</p>
+      <div class="flex flex-col gap-4 mt-4">
+        <div class="flex flex-row justify-between gap-8">
+          <p class="border text-blue-400 text-md font-semibold rounded-lg w-full pr-6 pl-2">Front-End Developer</p>
+          <button
+            class="bg-red-500 rounded-lg text-white px-2 focus-outline-none focus:bg-green-500 focus:scale-95 focus:duration-100">Remove</button>
+        </div>
+        <div class="flex flex-row justify-between gap-8">
+          <p class="border text-blue-400 text-md font-semibold rounded-lg w-full pr-6 pl-2">Project Management</p>
+          <button
+            class="bg-red-500 rounded-lg text-white px-2 focus-outline-none focus:bg-green-500 focus:scale-95 focus:duration-100">Remove</button>
+        </div>
+        <div class="flex flex-row justify-between gap-8">
+          <p class="border text-blue-400 text-md font-semibold rounded-lg w-full pr-6 pl-2">Business Analyst</p>
+          <button
+            class="bg-red-500 rounded-lg text-white px-2 focus-outline-none focus:bg-green-500 focus:scale-95 focus:duration-100">Remove</button>
+        </div>
+        <div class="flex flex-row justify-between gap-8">
+          <p class="border text-blue-400 text-md font-semibold rounded-lg w-full pr-6 pl-2">Virtual Assistatnt</p>
+          <button
+            class="bg-red-500 rounded-lg text-white px-2 focus-outline-none focus:bg-green-500 focus:scale-95 focus:duration-100">Remove</button>
+        </div>
+      </div>
+    </div>
+    <div class="grid grid-row-2">
+      <div class="mt-3 ml-32">
+        <p class="font-semibold">Select interested sector to add it</p>
+        <select
+          class="px-2 py-1 w-full outline-none border transition-all focus:border-orange-500 mt-[3px] text-gray-900 rounded-lg bg-white text-sm cursor-pointer "
+          recuired>
+          <option class="hidden">Select sector</option>
+          <option>Front-End Developer</option>
+          <option>Project Management</option>
+          <option>Business Analyst</option>
+          <option>Virtual Assistatnt</option>
+          <option>Graphic & Animation</option>
+          <option>SQA</option>
+          <option>Data Analysis</option>
+        </select>
+        <button
+          class="bg-blue-500 rounded-lg text-white px-6 mt-4 items-center focus:bg-orange-500 focus:scale-95 focus:duration-100">Add</button>
+      </div>
+      <img src="{% static 'job/img/interest.png' %}" alt="" class="w-96 ml-24">
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,204 @@
+{% load static %}
+{% load tailwind_tags %}
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="{% static 'profile/js/index.js' %}" type="text/javascript"></script>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://unpkg.com/flowbite@1.4.7/dist/datepicker.js"></script>
+    <link rel="stylesheet" href="{% static 'profile/css/style.css' %}">
+    <script src="{% static 'js/index.js' %}" type="text/javascript"></script>
+    <title>Resume2Do</title>
+    <link rel="icon" type="image/x-icon" href="{% static 'profile/img/favicon.png' %}">
+    {% tailwind_css %}
+</head>
+
+<body>
+    <!--Navbar start-->
+
+    {% if request.user.is_authenticated %}
+    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 z-50 fixed w-full ">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+            <!--<a href="https://flowbite.com" class="flex items-center">-->
+            <a href="{% url 'home' %}"><img src="{% static 'profile/img/Logo.png' %}" class="mr-3 h-6 sm:h-9"
+                    alt="Resume2Do" /></a>
+            <!--<span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>-->
+
+            <div class="flex md:order-2">
+
+                <div x-data="{
+                    open: false,
+                    toggle() {
+                        if (this.open) {
+                            return this.close()
+                        }
+        
+                        this.$refs.button.focus()
+        
+                        this.open = true
+                    },
+                    close(focusAfter) {
+                        if (! this.open) return
+        
+                        this.open = false
+        
+                        focusAfter && focusAfter.focus()
+                    }
+                }" x-on:keydown.escape.prevent.stop="close($refs.button)"
+                    x-on:focusin.window="! $refs.panel.contains($event.target) && close()" x-id="['dropdown-button']"
+                    class="relative">
+                    <!-- Button -->
+                    <button x-ref="button" x-on:click="toggle()" :aria-expanded="open"
+                        :aria-controls="$id('dropdown-button')" type="button"
+                        class="text-white bg-blue-700 hover:bg-orange-300 duratio-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <span>Hi! {{request.user.username}}</span>
+                        <span aria-hidden="true">&darr;</span>
+                    </button>
+
+                    <!-- Panel -->
+                    <div x-ref="panel" x-show="open" x-transition.origin.top.left
+                        x-on:click.outside="close($refs.button)" :id="$id('dropdown-button')" style="display: none;"
+                        class="absolute left-0 mt-2 w-24 bg-white rounded shadow-md overflow-hidden">
+                        <div>
+                            <a href="{% url 'profile_dashboard' %}"
+                                class="block w-full px-5 py-2 text-left text-sm hover:bg-blue-400 disabled:text-gray-500">
+                                Profile
+                            </a>
+                        </div>
+
+                        <div class="border-t border-orange-500">
+                            <a href="{% url 'signout' %}"
+                                class="block w-full px-5 py-2 text-left text-sm hover:bg-blue-400 disabled:text-gray-500">
+                                Logout
+                            </a>
+
+                            <!--<a href="#" disabled
+                                class="block w-full px-4 py-2 text-left text-sm hover:bg-gray-50 disabled:text-gray-500">
+                                Delete task
+                            </a>-->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-4">
+                <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+                    <li>
+                        <a href="{% url 'resume' %}"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white text-sm mx-5 mt-1.8 hover:text-orange-500 duration-100 drop-shadow-md"
+                            aria-current="page">Resume</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'jobcircular' %}"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white text-sm mx-5 mt-1.8 hover:text-orange-500 drop-shadow-md duration-100"
+                            aria-current="page">Job Circular</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white text-sm mx-5 mt-1.8 hover:text-orange-500 drop-shadow-md duration-100"
+                            aria-current="page">Guidelines & Blogs</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'hirepost' %}"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white text-sm mx-5 mt-1.8 hover:text-orange-500 drop-shadow-md duration-100"
+                            aria-current="page">Creat Job</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% else %}
+    <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 z-50 fixed w-full ">
+        <div class="container flex flex-wrap justify-between items-center mx-auto">
+            <!--<a href="https://flowbite.com" class="flex items-center">-->
+            <a href="{% url 'home' %}"><img src="{% static 'profile/img/Logo.png' %}" class="mr-3 h-6 sm:h-9"
+                    alt="Resume2Do" /></a>
+            <!--<span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">Flowbite</span>-->
+
+            <div class="flex md:order-2">
+                <button><a href="{% url 'login' %}"
+                        class="text-white bg-blue-700 hover:bg-orange-300 duratio-200 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Log
+                        In</a></button>
+            </div>
+
+            <div class="hidden justify-between items-center w-full md:flex md:w-auto md:order-1" id="mobile-menu-4">
+                <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+                    <li>
+                        <a href="{% url 'resume' %}"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white text-sm mx-5 mt-1.8 hover:text-orange-500 duration-100 drop-shadow-md"
+                            aria-current="page">Resume</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'jobcircular' %}"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white text-sm mx-5 mt-1.8 hover:text-orange-500 drop-shadow-md duration-100"
+                            aria-current="page">Job Circular</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white text-sm mx-5 mt-1.8 hover:text-orange-500 drop-shadow-md duration-100"
+                            aria-current="page">Guidelines & Blogs</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'hirepost' %}"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white text-sm mx-5 mt-1.8 hover:text-orange-500 drop-shadow-md duration-100"
+                            aria-current="page">Creat Job</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    {% endif %}
+    <!--Navbar end-->
+
+
+    {% block content %}
+
+    {% endblock content %}
+
+    <!--Footer start-->
+    <div>
+        <div>
+            <hr class="my-6 border-gray-200 border-y-8" />
+            <footer class="p-2 bg-blue-800 shadow md:px-6 md:py-8">
+                <div class="sm:flex sm:items-center sm:justify-between">
+                    <div class="text-white">
+                        <p class="text-lg font-bold">Get in touch</p>
+                        <p>Mobile: +88012345678 <br>Mail: abcd@resume2do.com<br>Addess: H#1,Block:B, Banani-4, Dhaka</p>
+                    </div>
+                    <a href="{% url 'home' %}" class="justify-center ml-32 sm:mb-0">
+                        <img src="{% static 'profile/img/Logo.png' %}" class="mr-3 bg-white px-10 h-8 text-2xl"
+                            alt="Resume2Do" />
+                    </a>
+                    <ul class="flex flex-wrap items-center mb-6 text-sm text-white sm:mb-0 dark:text-gray-400">
+                        <li>
+                            <a href="{% url 'resume' %}" class="mr-4 hover:underline md:mr-6 ">Resume</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'jobcircular' %}" class="mr-4 hover:underline md:mr-6">Job Circulars</a>
+                        </li>
+                        <li>
+                            <a href="#" class="mr-4 hover:underline md:mr-6 ">Guidelines & Blogs</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:underline">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+                <span class="block text-sm text-white sm:text-center dark:text-gray-400">© 2022 <a
+                        href="{% url 'home' %}" class="hover:underline">Resume2Do</a>. All Rights Reserved.
+                </span>
+            </footer>
+        </div>
+    </div>
+    <!--Footer end-->
+
+</body>
+
+</html>

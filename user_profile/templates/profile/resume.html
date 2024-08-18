@@ -1,0 +1,58 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% load tailwind_tags %}
+
+{% block content %}
+<div class="pt-24 mx-20">
+  <p class="text-center font-bold text-2xl">Choose Your Templates</p>
+  <div class="flex flex-row justify-center mt-10 mb-14 gap-32 font-medium">
+    <a href="#" class="link link-underline link-underline-black text-black">Educational CV</a>
+    <a href="#" class="link link-underline link-underline-black text-black">Industrial CV</a>
+  </div>
+  <div class="grid grid-cols-4 gap-24 9/12 mt-10 drop-shadow-lg mb-10">
+    <div
+      class="flex flex-col text-center gap-2 text-md font-medium cursor-pointer transform transition duration-300 hover:scale-110 hover:flex justify-center items-center hover:drop-shadow-xl">
+      <img src="{% static 'profile/img/resume1.jpg' %}" alt="">
+      <p>Skill Up</p>
+    </div>
+    <div
+      class="flex flex-col text-center gap-2 text-md font-medium cursor-pointer transform transition duration-300 hover:scale-110 hover:flex justify-center items-center hover:drop-shadow-xl">
+      <img src="{% static 'profile/img/resume2.jpg' %}" alt="">
+      <p>Creative</p>
+    </div>
+    <div
+      class="flex flex-col text-center gap-2 text-md font-medium cursor-pointer transform transition duration-300 hover:scale-110 hover:flex justify-center items-center hover:drop-shadow-xl">
+      <img src="{% static 'profile/img/resume3.png' %}" alt="">
+      <p>Code Rush</p>
+    </div>
+    <div
+      class="flex flex-col text-center gap-2 text-md font-medium cursor-pointer transform transition duration-300 hover:scale-110 hover:flex justify-center items-center hover:drop-shadow-xl">
+      <img src="{% static 'profile/img/resume1.jpg' %}" alt="">
+      <p>Skill Up</p>
+    </div>
+
+
+
+    <div
+      class="flex flex-col text-center gap-2 text-md font-medium cursor-pointer transform transition duration-300 hover:scale-110 hover:flex justify-center items-center hover:drop-shadow-xl">
+      <img src="{% static 'profile/img/resume2.jpg' %}" alt="">
+      <p>Creative</p>
+    </div>
+    <div
+      class="flex flex-col text-center gap-2 text-md font-medium cursor-pointer transform transition duration-300 hover:scale-110 hover:flex justify-center items-center hover:drop-shadow-xl">
+      <img src="{% static 'profile/img/resume3.png' %}" alt="">
+      <p>Code Rush</p>
+    </div>
+    <div
+      class="flex flex-col text-center gap-2 text-md font-medium cursor-pointer transform transition duration-300 hover:scale-110 hover:flex justify-center items-center hover:drop-shadow-xl">
+      <img src="{% static 'profile/img/resume1.jpg' %}" alt="">
+      <p>Skill Up</p>
+    </div>
+    <div
+      class="flex flex-col text-center gap-2 text-md font-medium cursor-pointer transform transition duration-300 hover:scale-110 hover:flex justify-center items-center hover:drop-shadow-xl">
+      <img src="{% static 'profile/img/resume2.jpg' %}" alt="">
+      <p>Creative</p>
+    </div>
+  </div>
+</div>
+{% endblock content %}

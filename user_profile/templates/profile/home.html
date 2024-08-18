@@ -1,0 +1,109 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% load tailwind_tags %}
+
+{% block content %}
+<!--Templates start-->
+<div class="pt-24 mx-20">
+  <p class="text-center font-bold text-2xl">Top Trending Templates</p>
+  <div class="grid grid-cols-4 gap-24 9/12 mt-10 drop-shadow-lg">
+    <img src="{% static 'profile/img/resume1.jpg' %}" alt=""
+      class="cursor-pointer transform transition duration-300 hover:scale-110 hover: flex justify-center items-center hover:drop-shadow-xl">
+    <img src="{% static 'profile/img/resume2.jpg' %}" alt=""
+      class="cursor-pointer transform transition duration-300 hover:scale-110 hover: flex justify-center items-center hover:drop-shadow-xl">
+    <img src="{% static 'profile/img/resume3.png' %}" alt=""
+      class="cursor-pointer transform transition duration-300 hover:scale-110 hover: flex justify-center items-center hover:drop-shadow-xl">
+    <a href="{% url 'profile_dashboard' %}"><img src="{% static 'profile/img/cv.png' %}"
+      class="cursor-pointer transform transition duration-300 hover:scale-110 hover: flex justify-center items-center hover:drop-shadow-xl"></a>
+  </div>
+  <a href="resume.html">
+    <p class="text-center font-bold text-sky-500 text-sm mt-8">Show all Templates</p>
+  </a>
+</div>
+<!--Templates end-->
+
+<!--Latest job start-->
+<div class="mt-24 mb-14 mx-20">
+  <p class="text-center font-bold text-2xl">Latest Job Circulars</p>
+  <div class="flex flex-col gap-2 mt-8">
+    <a href="#">
+      <div class="flex flex-row gap-4 p-2 hover:drop-shadow-xl duration-200">
+        <img src="{% static 'profile/img/jobimg.png' %}" alt="" class="object-cover h-12 w-18 py-1 drop-shadow-xl">
+        <div class="bg-gray-100  drop-shadow-md ml-2 pl-2 py-2 w-full">
+          <p class="font-bold text-sm"> Junior Full Steck Devoloper in Arisent Software firm</p>
+          <p class="text-sm"> Job Description: Need a Full Steck Web Developer in the junior position.
+            Salary Range: 25000 - 30000 per month. Workdays: 5 days <br>
+            Location: H#23/A, Block-B, Gulshan-2, Dhaka </p>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div class="flex flex-row gap-4 p-2 hover:drop-shadow-xl duration-200">
+        <img src="{% static 'profile/img/jobimg.png' %}" alt="" class="object-cover h-12 w-18 py-1 drop-shadow-xl">
+        <div class="bg-gray-100  drop-shadow-md ml-2 pl-2 py-2 w-full">
+          <p class="font-bold text-sm"> Junior Full Steck Devoloper in Arisent Software firm</p>
+          <p class="text-sm"> Job Description: Need a Full Steck Web Developer in the junior position.
+            Salary Range: 25000 - 30000 per month. Workdays: 5 days <br>
+            Location: H#23/A, Block-B, Gulshan-2, Dhaka </p>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div class="flex flex-row gap-4 p-2 hover:drop-shadow-xl duration-200">
+        <img src="{% static 'profile/img/jobimg.png' %}" alt="" class="object-cover h-12 w-18 py-1 drop-shadow-xl">
+        <div class="bg-gray-100  drop-shadow-md ml-2 pl-2 py-2 w-full">
+          <p class="font-bold text-sm"> Junior Full Steck Devoloper in Arisent Software firm</p>
+          <p class="text-sm"> Job Description: Need a Full Steck Web Developer in the junior position.
+            Salary Range: 25000 - 30000 per month. Workdays: 5 days <br>
+            Location: H#23/A, Block-B, Gulshan-2, Dhaka </p>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div class="flex flex-row gap-4 p-2 hover:drop-shadow-xl duration-200">
+        <img src="{% static 'profile/img/jobimg.png' %}" alt="" class="object-cover h-12 w-18 py-1 drop-shadow-xl">
+        <div class="bg-gray-100  drop-shadow-md ml-2 pl-2 py-2 w-full">
+          <p class="font-bold text-sm"> Junior Full Steck Devoloper in Arisent Software firm</p>
+          <p class="text-sm"> Job Description: Need a Full Steck Web Developer in the junior position.
+            Salary Range: 25000 - 30000 per month. Workdays: 5 days <br>
+            Location: H#23/A, Block-B, Gulshan-2, Dhaka </p>
+        </div>
+      </div>
+    </a>
+    <a href="#">
+      <div class="flex flex-row gap-4 p-2 hover:drop-shadow-xl duration-200">
+        <img src="{% static 'profile/img/jobimg.png' %}" alt="" class="object-cover h-12 w-18 py-1 drop-shadow-xl">
+        <div class="bg-gray-100  drop-shadow-md ml-2 pl-2 py-2 w-full">
+          <p class="font-bold text-sm"> Junior Full Steck Devoloper in Arisent Software firm</p>
+          <p class="text-sm"> Job Description: Need a Full Steck Web Developer in the junior position.
+            Salary Range: 25000 - 30000 per month. Workdays: 5 days <br>
+            Location: H#23/A, Block-B, Gulshan-2, Dhaka </p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>
+<!--Latest job end-->
+
+<!--Try it start-->
+<hr class="my-6 border-gray-200 border-y-8" />
+
+<div class="flex flex-row mt-28 mb-20 mx-10 gap-8 ">
+  <div>
+    <img src="{% static 'profile/img/tryit2.png' %}" alt="" class="w-full hover:drop-shadow-xl duration-200">
+  </div>
+  <div class="text-center justify w-9/12 px-4 pt-10">
+    <p class="text-md font-bold mb-4">Try It Now</p>
+    <p class="text-md font-medium">Now create your resume in 20 minutes. Only by choosing a template and fill up the
+      recuired fields and boom there grou
+      you have your CV. You can also find suitable jobs for you. There are many job circulars find suitable one for
+      you apply for the job by attaching your CV.
+      Want to notify by new job circulars of your interests? NO worries, you will also have a option where you can
+      select the interesed
+      sectors that you want to enter. And you will be notified through your mail when a new job circular will be
+      posted.
+    </p>
+  </div>
+</div>
+<!--try it end-->
+{% endblock content %}

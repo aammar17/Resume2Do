@@ -1,0 +1,62 @@
+{% extends 'profile/base.html' %}
+{% load static %}
+{% load tailwind_tags %}
+
+{% block content %}
+<div class="pt-24 flex flex-col gap-8 mx-20">
+  <div class="flex flex-row">
+    <img src="{% static 'job/img/jobimg.png' %}" alt="" class="w-64">
+    <div class="ml-4">
+      <p class="text-lg font-bold mb-2 font-sans ">Full Job Description</p>
+      <p class="">1Starr Enterprises is looking to hire an office manager to be responsible for the general operation
+        of our office.
+        Duties will involve greeting visitors, answering incoming phone calls, purchasing office supplies and taking
+        proper
+        inventory, and supervising our office staff to ensure maximum productivity. You will also be required to
+        create
+        presentations and produce management-level reports.</p>
+    </div>
+  </div>
+  <div class="">
+    <p>Responsibility:<br>
+      1. Overseeing general office operation.<br>
+      2. Greeting visitors, answering a high-volume of incoming phone calls and delivering world-class service to our
+      customers.<br>
+      3. Coordinating appointments and meetings and managing staff calendars and schedules.<br>
+      4. Supervising, mentoring, training, and coaching our office staff and delegating assignments to ensure maximum
+      productivity.<br>
+      5. Producing reports, composing correspondence, and drafting new contracts.<br>
+
+      job Type:<br>
+      Salary Range: 25,000 - 30,000
+      <br>
+      Schedeule: 8 hours shift (Monday - Friday) <br>
+      Supplimental pay: Bonus, Sign in Bonus.
+      Location: H# 32, Block-B, Mirpur DOHS, Mirpur, Dhaka
+  </div>
+  <form method='POST' action="{% url 'jobapply' %}">
+    {% csrf_token %}
+    <div>
+      <p class="text-center text-orange-500 font-semibold justify 6-12 mt-4">To apply this job you have to fill up the
+        required text fields and attach the resume link you edited on this site</p>
+      <p class="font-bold text-lg">Write a Cover Letter</p>
+      <textarea id="message" rows="20" maxlength="2000"
+        class="block p-2.5 w-full text-sm text-gray-900 bg-white rounded-lg border border-gray-300 focus:ring-4 focus:ring-blue-500 focus:border-blue-500"
+        name="letter" placeholder="Your message..."></textarea>
+    </div>
+
+    <div class="flex flex-row">
+      <p class="">Attach your resume link to let them know about you. Without attaching resume link you can not submit
+        application </p>
+      <button
+        class="p-2 ml-4 submit_btn text-sm bg-blue-500 text-white cursor-pointer transition-all hover:bg-orange-500 flex justify-center items-center bg-opacity-90 rounded-[10px] font-bold">Attach
+        my resume link</button>
+    </div>
+    <div class="flex justify-center">
+      <button
+        class="submit_btn text-sm my-10 bg-green-600 text-white cursor-pointer transition-all hover:bg-orange-500 rounded-2xl font-bold w-96 h-10">Submit
+        Application</button>
+    </div>
+  </form>
+</div>
+{% endblock content %}
